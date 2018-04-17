@@ -29,7 +29,7 @@ app.post(`/bot${TOKEN}`, (req, res) => {
   res.sendStatus(200);
 });
 // We are receiving updates at the route below!
-app.get(`/*`, (req, res) => {
+app.get('*', (req, res) => {
   console.log('wadus')
   res.send();
 });
