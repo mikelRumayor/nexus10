@@ -6,7 +6,7 @@
 
 const TOKEN = process.env.TELEGRAM_TOKEN || '513805031:AAG27Li3yReG-2zGS6dYh-_yf_DsqgiHLPs';
 const url = 'https://nexus10.herokuapp.com/';
-const port = process.env.PORT;
+const port = process.env.PORT || 443;
 
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
@@ -36,6 +36,6 @@ app.listen(port, () => {
 
 // Just to ping!
 bot.on('message', msg => {
-  console.log('works !!!!!!!!!!!!!' , msg)
+  console.log('works !!!!!!!!!!!!!', msg);
   bot.sendMessage(msg.chat.id, 'I am alive!');
 });
