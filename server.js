@@ -23,7 +23,6 @@ client.on('connect', function () {
 client.on('message', function (topic, message) {
   // message is Buffer
   console.log(message.toString())
-  client.end()
 })
 
 // No need to pass any parameters as we will handle the updates with Express
