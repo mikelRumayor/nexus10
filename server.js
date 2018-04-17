@@ -12,17 +12,20 @@ const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+let id = 211405073;
 
 const mqtt = require('mqtt')
 const client  = mqtt.connect('mqtt://broker.hivemq.com')
 
 client.on('connect', function () {
-  client.subscribe('nexus10-test')
+  client.subscribe('nexus10-test2')
 })
 
 client.on('message', function (topic, message) {
   // message is Buffer
   console.log(message.toString())
+  bot.sendMessage(id, message.toString());
+
 })
 
 // No need to pass any parameters as we will handle the updates with Express
@@ -55,5 +58,6 @@ app.listen(port, () => {
 bot.on('message', msg => {
   client.publish('nexus10-test', JSON.stringify(msg))
   console.log('works !!!!!!!!!!!!!', msg);
+  id = msg.chat.id;
   bot.sendMessage(msg.chat.id, 'I am alive!');
 });
