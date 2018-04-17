@@ -8,7 +8,7 @@ const TOKEN = process.env.TELEGRAM_TOKEN || '513805031:AAG27Li3yReG-2zGS6dYh-_yf
 const url = 'https://nexus10.herokuapp.com';
 const port =  8443;
 
-const TelegramBot = require('node-telegram-bot-api');
+// const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 const bodyParser = require('body-parser');
 
