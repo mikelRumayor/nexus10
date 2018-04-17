@@ -12,6 +12,20 @@ const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+
+const mqtt = require('mqtt')
+const client  = mqtt.connect('mqtt://broker.hivemq.com')
+
+client.on('connect', function () {
+  client.subscribe('nexus10-test')
+})
+
+client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  client.end()
+})
+
 // No need to pass any parameters as we will handle the updates with Express
 const bot = new TelegramBot(TOKEN);
 
@@ -40,6 +54,7 @@ app.listen(port, () => {
 
 // Just to ping!
 bot.on('message', msg => {
+  client.publish('nexus10-test', msg)
   console.log('works !!!!!!!!!!!!!', msg);
   bot.sendMessage(msg.chat.id, 'I am alive!');
 });
