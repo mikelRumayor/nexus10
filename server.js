@@ -13,10 +13,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // No need to pass any parameters as we will handle the updates with Express
-const bot = new TelegramBot(TOKEN);
+// const bot = new TelegramBot(TOKEN);
 
 // This informs the Telegram servers of the new webhook.
-bot.setWebHook(`${url}/bot${TOKEN}`);
+// bot.setWebHook(`${url}/bot${TOKEN}`);
 
 const app = express();
 
@@ -25,13 +25,13 @@ app.use(bodyParser.json());
 
 // We are receiving updates at the route below!
 app.post(`/bot${TOKEN}`, (req, res) => {
-  bot.processUpdate(req.body);
+  // bot.processUpdate(req.body);
   res.sendStatus(200);
 });
 // We are receiving updates at the route below!
 app.get(`/*`, (req, res) => {
   console.log('wadus')
-  res.sendStatus(200);
+  res.send();
 });
 // Start Express Server
 app.listen(port, () => {
@@ -39,7 +39,7 @@ app.listen(port, () => {
 });
 
 // Just to ping!
-bot.on('message', msg => {
-  console.log('works !!!!!!!!!!!!!', msg);
-  bot.sendMessage(msg.chat.id, 'I am alive!');
-});
+// bot.on('message', msg => {
+//   console.log('works !!!!!!!!!!!!!', msg);
+//   bot.sendMessage(msg.chat.id, 'I am alive!');
+// });
