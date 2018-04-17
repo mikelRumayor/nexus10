@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
 const bot = new TelegramBot(TOKEN);
 
 // This informs the Telegram servers of the new webhook.
-bot.setWebHook(`${url}:${port}/bot${TOKEN}`);
+bot.setWebHook(`${url}/bot${TOKEN}`);
 
 const app = express();
 
