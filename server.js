@@ -36,5 +36,6 @@ app.listen(port, () => {
 
 // Just to ping!
 bot.on('message', msg => {
+  console.log('works !!!!!!!!!!!!!' , msg)
   bot.sendMessage(msg.chat.id, 'I am alive!');
 });
