@@ -54,7 +54,7 @@ app.listen(port, () => {
 
 // Just to ping!
 bot.on('message', msg => {
-  client.publish('nexus10-test', msg)
+  client.publish('nexus10-test', JSON.stringify(msg))
   console.log('works !!!!!!!!!!!!!', msg);
   bot.sendMessage(msg.chat.id, 'I am alive!');
 });
