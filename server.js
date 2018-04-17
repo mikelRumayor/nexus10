@@ -6,7 +6,7 @@
 
 const TOKEN = process.env.TELEGRAM_TOKEN || '513805031:AAG27Li3yReG-2zGS6dYh-_yf_DsqgiHLPs';
 const url = 'https://nexus10.herokuapp.com/';
-const port = 443;
+const port = process.env.PORT || 443;
 
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
 const bot = new TelegramBot(TOKEN);
 
 // This informs the Telegram servers of the new webhook.
-bot.setWebHook(`${url}/bot${TOKEN}`);
+bot.setWebHook(`${url}:${port}/bot${TOKEN}`);
 
 const app = express();
 
